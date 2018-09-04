@@ -24,7 +24,7 @@ class MainMenu extends Component {
     const listItems = items.map((item) =>
       <li key={item.id} id={item.id} className="main-menu__list__element">
         <img className="main-menu__list__element__logo" src={item.image} alt={item.name}/>
-        <label id={item.id} className="main-menu__list__element__text">{item.name}</label>
+        <label className="main-menu__list__element__text">{item.name}</label>
       </li>
     );
     return (
