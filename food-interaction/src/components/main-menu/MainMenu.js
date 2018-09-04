@@ -14,7 +14,6 @@ class MainMenu extends Component {
       e.target = e.target.parentElement;
       this.clickHandler(e);
     } else {
-      console.log('YEE!');
       ReactDOM.render(<SubMenu target={e.target}/>, document.querySelector('.sub-menu'));
     }
   }
