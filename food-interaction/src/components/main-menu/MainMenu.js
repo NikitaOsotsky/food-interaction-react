@@ -5,18 +5,17 @@ import './MainMenu.css'
 class MainMenu extends Component {
 
   clickHandler() {
-    console.log(this);
+
   }
 
   render() {
-    const numbers = this.props.menu.model;
-    const listItems = numbers.map((number) =>
-      <li key={number.id} id={number.id} className="main-menu__list__element">
-        <img className="main-menu__list__element__logo" src={number.image} alt={number.name}/>
-        <label className="main-menu__list__element__text">{number.name}</label>
+    const items = this.props.menu.model;
+    const listItems = items.map((item) =>
+      <li key={item.id} id={item.id} className="main-menu__list__element">
+        <img className="main-menu__list__element__logo" src={item.image} alt={item.name}/>
+        <label className="main-menu__list__element__text">{item.name}</label>
       </li>
     );
-    console.log(listItems);
     return (
         <ul onClick={() => this.clickHandler()} className="main-menu__list">
           {listItems}
