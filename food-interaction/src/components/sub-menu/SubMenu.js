@@ -50,6 +50,10 @@ class SubMenu extends Component {
     }
   }
 
+  static submenuClick(e) {
+
+  }
+
   render() {
     console.log(this.state);
     switch (this.state.visible) {
@@ -58,7 +62,7 @@ class SubMenu extends Component {
         this.items = SubMenu.getDataForRender(this.IDtarget);//Пришёл массив с одной или несколькими менюхами
           this.h4 = this.items.map((key)=>
             <h4 key={key.menuName} className="sub-menu__header slave-header">{key.menuName}
-              <ul className="sub-menu__list">
+              <ul onClick={(e)=> SubMenu.submenuClick} className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem)=>
                     <li key={Math.random()} className="sub-menu__list__item">
                       {this.liName = this.getDataLi(liItem, 'name')}
