@@ -20,30 +20,42 @@ class SubMenu extends Component {
     });
   }
 
-  getDataForRender(id) {
+  /**
+   *
+   * @param id type number
+   * @returns {*}
+   */
+  static getDataForRender(id) {
     return (
         SubMenu.backEndData()[id]
     );
   }
+
+  /**
+   * @param object type object
+   * @param property type string
+   * @returns string
+   */
   getDataLi(object, property) {
     switch (property) {
       case 'name':
-        for (this.key in object)
+        for (let key in object)
+        this.key = key;
         return this.key;
-        break;
       case 'cost':
-        for (this.key in object)
+        for (let key in object)
+         this.key = key;
         return object[this.key];
-        break;
       default: break;
     }
   }
+
   render() {
     console.log(this.state);
     switch (this.state.visible) {
       case 1:
         this.IDtarget = this.state.target.id;
-        this.items = this.getDataForRender(this.IDtarget);//Пришёл массив с одной или несколькими менюхами
+        this.items = SubMenu.getDataForRender(this.IDtarget);//Пришёл массив с одной или несколькими менюхами
           this.h4 = this.items.map((key)=>
             <h4 key={key.menuName} className="sub-menu__header slave-header">{key.menuName}
               <ul className="sub-menu__list">
@@ -70,9 +82,12 @@ class SubMenu extends Component {
         );
       default: return;
     }
-
   }
 
+  /**
+   * temp function
+   * @returns static data
+   */
   static backEndData() {
     return ({
       "5b7bfe58ee0c1be19742829d": [
