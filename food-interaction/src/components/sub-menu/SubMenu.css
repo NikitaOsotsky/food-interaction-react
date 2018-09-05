@@ -3,11 +3,11 @@ stylesheet for sub menu
  */
 .sub-menu {
   position: absolute;
-  width: 0;
+  width: 100%;/*TODO*/
   height: 100%;
   left: 100%;
   top: 0;
-  opacity: 0;
+  opacity: 1;/*TODO*/
   transition: opacity ease-out 0.2s, width ease-out 0.2s;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -85,4 +85,19 @@ sub-menu issues
   font-size: 0.85em;
   text-align: center;
   z-index: -1;
+}
+/**
+close for any div
+ */
+.close-div {
+  position: absolute;
+  top: 0;
+  left: 90%;
+  color: red;
+  cursor: pointer;
+  font-size: 0.6em;
+  transition: text-shadow ease-out 0.2s;
+}
+.close-div:hover {
+  text-shadow: 2px 2px 3px rgba(118, 6, 30, 0.8);
 }
