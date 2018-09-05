@@ -32,21 +32,24 @@ class SubMenu extends Component {
       case 1:
         this.IDtarget = this.state.target.id;
         this.items = this.getDataForRender(this.IDtarget);//Пришёл массив с одной или несколькими менюхами
+          this.h4 = this.items.map((key)=>
+            <h4 key={key.menuName} className="sub-menu__header slave-header">{key.menuName}
+              <ul className="sub-menu__list">
 
-        for (let key in this.items) {
-          console.log(this.items[key].menuName);
-          console.log(this.items[key].menu);
-        }
-
+              </ul>
+            </h4>
+          );
         return (
             <div>
-
+              <span className="close-div">&#9587</span>
+              <img className="sub-menu__logo" src={this.state.target.firstChild.src} alt={this.state.target.firstChild.alt}/>
+              <h3 className="sub-menu__header main-header">{this.state.target.lastChild.textContent}</h3>
+              {this.h4}
             </div>
-            //TODO: show form && render data by li.id from json
         );
       case 0:
         return (
-            <div> </div>//TODO: hide form && clear data
+            <div> </div>
         );
       default: return;
     }
