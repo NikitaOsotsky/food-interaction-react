@@ -25,7 +25,19 @@ class SubMenu extends Component {
         SubMenu.backEndData()[id]
     );
   }
-
+  getDataLi(object, property) {
+    switch (property) {
+      case 'name':
+        for (this.key in object)
+        return this.key;
+        break;
+      case 'cost':
+        for (this.key in object)
+        return object[this.key];
+        break;
+      default: break;
+    }
+  }
   render() {
     console.log(this.state);
     switch (this.state.visible) {
@@ -37,8 +49,8 @@ class SubMenu extends Component {
               <ul className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem)=>
                     <li key={Math.random()} className="sub-menu__list__item">
-                      Item
-                      <span className="sub-menu__list__item__cost">0.00</span>
+                      {this.liName = this.getDataLi(liItem, 'name')}
+                      <span className="sub-menu__list__item__cost">{this.liCost = this.getDataLi(liItem, 'cost')}</span>
                     </li>
                 )}
               </ul>
