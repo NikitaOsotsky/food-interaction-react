@@ -1,5 +1,6 @@
 .main-menu__list {
   padding-left: 80px;
+  user-select: none;
 }
 .main-menu__list__element {
   position: relative;

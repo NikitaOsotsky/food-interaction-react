@@ -45,6 +45,9 @@ stylesheet for sub menu
 /**
 sub-menu issues
  */
+.sub-menu__list {
+  padding-left: 20px;
+}
 .sub-menu__logo {
   margin: 0 auto;
   display: block;
@@ -60,6 +63,7 @@ sub-menu issues
   cursor: pointer;
   position: relative;
   user-select: none;
+  text-align: left;
 }
 .sub-menu__header {
   color: rgba(100, 107, 110, 0.9);
