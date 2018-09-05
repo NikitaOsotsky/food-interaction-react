@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 
 class MainMenu extends Component {
 
-  static clickHandler(e) {
+  static clickHandler(e) {//ToDO: add div
     if(e.target.tagName !== 'LI' && e.target.parentElement.tagName !== 'LI') {
       return;
     }
