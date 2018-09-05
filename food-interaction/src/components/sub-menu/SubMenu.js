@@ -35,7 +35,12 @@ class SubMenu extends Component {
           this.h4 = this.items.map((key)=>
             <h4 key={key.menuName} className="sub-menu__header slave-header">{key.menuName}
               <ul className="sub-menu__list">
-
+                {this.liItems = key.menu.map((liItem)=>
+                    <li key={Math.random()} className="sub-menu__list__item">
+                      Item
+                      <span className="sub-menu__list__item__cost">0.00</span>
+                    </li>
+                )}
               </ul>
             </h4>
           );
@@ -60,70 +65,70 @@ class SubMenu extends Component {
     return ({
       "5b7bfe58ee0c1be19742829d": [
         {
-          "menu": {
-            "12313": {"Cheeseburger Happy Meal": 8.79},
-            "97684": {"Hamburger Happy Meal": 8.38},
-            "32445": {"4pc. Chicken McNuggets": 7.48}
-          },
+          "menu": [
+            {"Cheeseburger Happy Meal": 8.79},
+            {"Hamburger Happy Meal": 8.38},
+            {"4pc. Chicken McNuggets": 7.48}
+          ],
           "menuName": "Happy Meal"
         },
         {
-          "menu": {
-            "83638": {"Espresso": 3.20},
-            "29737": {"Cappuccino": 4.80},
-            "78483": {"Café Latte": 4.85},
-            "90965": {"Flat White": 5.35},
-            "28363": {"Long Black": 6.21},
-            "78866": {"Irish Coffee": 7.02}
-          },
+          "menu": [
+            {"Espresso": 3.20},
+            {"Cappuccino": 4.80},
+            {"Café Latte": 4.85},
+            {"Flat White": 5.35},
+            {"Long Black": 6.21},
+            {"Irish Coffee": 7.02}
+          ],
           "menuName": "McCafe"
         }
       ],
       "5b7bfe580d8e915e56833d79": [
         {
-          "menu": {
-            "73673": {"Pizza with tomatoes": 14.90},
-            "04863": {"Hamburger Happy Meal": 8.50}
-          },
+          "menu": [
+            {"Pizza with tomatoes": 14.90},
+            {"Hamburger Happy Meal": 8.50}
+          ],
           "menuName": "Pizzas"
         },
         {
-          "menu": {
-            "45566": {"Bagels with jam": 17.30},
-            "23432": {"Bagels Original": 15.55}
-          },
+          "menu": [
+            {"Bagels with jam": 17.30},
+            {"Bagels Original": 15.55}
+          ],
           "menuName": "Bagels"
         }
       ],
       "5b7bfe585b6f166bafcda840": [
         {
-          "menu": {
-            "98377": {"Big stake": 10.00},
-            "91833": {"Cold water": 0.10},
-            "08976": {"Small stake with chicken": 2.50},
-            "78338": {"Big pizza with mushrooms": 19.90}
-          },
+          "menu": [
+            {"Big stake": 10.00},
+            {"Cold water": 0.10},
+            {"Small stake with chicken": 2.50},
+            {"Big pizza with mushrooms": 19.90}
+          ],
           "menuName": "Standard"
         }
       ],
       "5b7bfe5889ab5df2a2be0226": [
         {
-          "menu": {
-            "73654": {"Pizza": 12.20},
-            "86733": {"Coffee": 2.40},
-            "05786": {"Tea": 1.90}
-          },
+          "menu": [
+            {"Pizza": 12.20},
+            {"Coffee": 2.40},
+            {"Tea": 1.90}
+          ],
           "menuName": "Humanity"
         }
       ],
       "5b7bfe58720f193c5be11a46": [
         {
-          "menu": {
-            "73673": {"Pizza with tomatoes": 10.79},
-            "04863": {"Hamburger Happy Meal": 8.10},
-            "18773": {"Large beer": 3.50},
-            "92762": {"Big pizza with mushrooms": 2.90}
-          },
+          "menu": [
+            {"Pizza with tomatoes": 10.79},
+            {"Hamburger Happy Meal": 8.10},
+            {"Large beer": 3.50},
+            {"Big pizza with mushrooms": 2.90}
+          ],
           "menuName": "Menu"
         }
       ]
