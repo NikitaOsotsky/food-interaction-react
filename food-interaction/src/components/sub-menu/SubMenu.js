@@ -1,6 +1,7 @@
 import { Component } from "react";
 import React from "react";
-import './SubMenu.css'
+import './SubMenu.css';
+import SubMenuChooser from './sub-menu-chooser/SubMenuChooser';
 
 class SubMenu extends Component {
   constructor(props) {
@@ -11,6 +12,10 @@ class SubMenu extends Component {
     };
   }
 
+  /**
+   *
+   * @param props
+   */
   componentWillReceiveProps(props) {
     this.setState((prevState) => {
       return {
@@ -50,16 +55,26 @@ class SubMenu extends Component {
     }
   }
 
+  /**
+   *
+   * @param e type event
+   * @param mouseButton type string
+   */
   static submenuClick(e, mouseButton) {
+    let buttonClick;
+    const clickedObj = e.target;
     switch (mouseButton) {
       case 'right':
         console.log('right');
+        buttonClick = 'right';
         break;
       case 'left':
         console.log('left');
+        buttonClick = 'left';
         break;
       default: return;
     }
+    //TODO:
   }
 
   render() {
