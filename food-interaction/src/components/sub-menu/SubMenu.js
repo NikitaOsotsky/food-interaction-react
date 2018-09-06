@@ -50,8 +50,16 @@ class SubMenu extends Component {
     }
   }
 
-  static submenuClick(e) {
-
+  static submenuClick(e, mouseButton) {
+    switch (mouseButton) {
+      case 'right':
+        console.log('right');
+        break;
+      case 'left':
+        console.log('left');
+        break;
+      default: return;
+    }
   }
 
   render() {
@@ -60,10 +68,13 @@ class SubMenu extends Component {
       case 1:
         this.IDtarget = this.state.target.id;
         this.items = SubMenu.getDataForRender(this.IDtarget);//Пришёл массив с одной или несколькими менюхами
-          this.h4 = this.items.map((key)=>
+        this.h4 = this.items.map((key) =>
             <h4 key={key.menuName} className="sub-menu__header slave-header">{key.menuName}
-              <ul onClick={(e)=> SubMenu.submenuClick} className="sub-menu__list">
-                {this.liItems = key.menu.map((liItem)=>
+              <ul onClick={(e) => SubMenu.submenuClick(e, 'left')} onContextMenu={(e) => {
+                e.preventDefault();
+                SubMenu.submenuClick(e, 'right')
+              }} className="sub-menu__list">
+                {this.liItems = key.menu.map((liItem) =>
                     <li key={Math.random()} className="sub-menu__list__item">
                       {this.liName = this.getDataLi(liItem, 'name')}
                       <span className="sub-menu__list__item__cost">{this.liCost = this.getDataLi(liItem, 'cost')}</span>
@@ -71,11 +82,12 @@ class SubMenu extends Component {
                 )}
               </ul>
             </h4>
-          );
+        );
         return (
             <div>
               <span className="close-div">&#9587</span>
-              <img className="sub-menu__logo" src={this.state.target.firstChild.src} alt={this.state.target.firstChild.alt}/>
+              <img className="sub-menu__logo" src={this.state.target.firstChild.src}
+                   alt={this.state.target.firstChild.alt}/>
               <h3 className="sub-menu__header main-header">{this.state.target.lastChild.textContent}</h3>
               {this.h4}
             </div>
