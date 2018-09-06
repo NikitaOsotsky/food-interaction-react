@@ -1,14 +1,15 @@
 import { Component } from "react";
 import React from "react";
 import './SubMenu.css';
-import SubMenuChooser from './sub-menu-chooser/SubMenuChooser';
+import SubMenuItem from './sub-menu-item/SubMenuItem';
 
 class SubMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: 1,
-      target: props.target
+      target: props.target,
+      itemsState: Array()
     };
   }
 
@@ -73,8 +74,8 @@ class SubMenu extends Component {
         buttonClick = 'left';
         break;
       default: return;
+
     }
-    //TODO:
   }
 
   render() {
@@ -90,10 +91,11 @@ class SubMenu extends Component {
                 SubMenu.submenuClick(e, 'right')
               }} className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem) =>
-                    <li key={Math.random()} className="sub-menu__list__item">
+                    <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')} liCost={this.getDataLi(liItem, 'cost')}/>
+                    /*<li key={Math.random()} className="sub-menu__list__item">
                       {this.liName = this.getDataLi(liItem, 'name')}
                       <span className="sub-menu__list__item__cost">{this.liCost = this.getDataLi(liItem, 'cost')}</span>
-                    </li>
+                    </li>*/
                 )}
               </ul>
             </h4>
