@@ -91,11 +91,8 @@ class SubMenu extends Component {
                 SubMenu.submenuClick(e, 'right')
               }} className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem) =>
-                    <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')} liCost={this.getDataLi(liItem, 'cost')}/>
-                    /*<li key={Math.random()} className="sub-menu__list__item">
-                      {this.liName = this.getDataLi(liItem, 'name')}
-                      <span className="sub-menu__list__item__cost">{this.liCost = this.getDataLi(liItem, 'cost')}</span>
-                    </li>*/
+                    <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')}
+                                 liCost={this.getDataLi(liItem, 'cost')}/>
                 )}
               </ul>
             </h4>
