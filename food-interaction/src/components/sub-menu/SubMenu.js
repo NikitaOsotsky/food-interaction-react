@@ -9,7 +9,7 @@ class SubMenu extends Component {
     this.state = {
       visible: 1,
       target: props.target,
-      itemsState: Array()
+      itemsState: Array().fill(null)
     };
   }
 
@@ -74,7 +74,7 @@ class SubMenu extends Component {
         buttonClick = 'left';
         break;
       default: return;
-
+    //TODO:action when click
     }
   }
 
@@ -86,13 +86,15 @@ class SubMenu extends Component {
         this.items = SubMenu.getDataForRender(this.IDtarget);//Пришёл массив с одной или несколькими менюхами
         this.h4 = this.items.map((key) =>
             <h4 key={key.menuName} className="sub-menu__header slave-header">{key.menuName}
-              <ul onClick={(e) => SubMenu.submenuClick(e, 'left')} onContextMenu={(e) => {
-                e.preventDefault();
-                SubMenu.submenuClick(e, 'right')
-              }} className="sub-menu__list">
+              <ul className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem) =>
                     <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')}
-                                 liCost={this.getDataLi(liItem, 'cost')}/>
+                                 liCost={this.getDataLi(liItem, 'cost')}
+                                 onClick={(e) => SubMenu.submenuClick(e, 'left')}
+                                 onContextMenu={(e) => {
+                      e.preventDefault();
+                      SubMenu.submenuClick(e, 'right')
+                    }}/>
                 )}
               </ul>
             </h4>
