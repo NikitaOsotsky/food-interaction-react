@@ -9,8 +9,10 @@ class SubMenu extends Component {
     this.state = {
       visible: 1,
       target: props.target,
-      itemsState: Array().fill(null)
+      itemsState: Array()
     };
+    console.log('this.state in constructor');
+    console.log(this.state.itemsState);
   }
 
   /**
@@ -24,6 +26,8 @@ class SubMenu extends Component {
         target: props.target
       };
     });
+    console.log('this.state in componentWillReceiveProps');
+    console.log(this.state.itemsState);
   }
 
   /**
@@ -61,7 +65,7 @@ class SubMenu extends Component {
    * @param e type event
    * @param mouseButton type string
    */
-  static submenuClick(e, mouseButton) {
+  submenuClick(e, mouseButton, self) {
     let buttonClick;
     const clickedObj = e.target;
     switch (mouseButton) {
@@ -74,12 +78,23 @@ class SubMenu extends Component {
         buttonClick = 'left';
         break;
       default: return;
-    //TODO:action when click
     }
+    console.log('this.state when click start');
+    console.log(this.state.itemsState);
+    const key = self.props.liName;
+    const value = buttonClick === 'left'? 1: -1;
+    this.setState((prevState) => {
+      return {
+        itemsState: this.state.itemsState.push({key: key, value: value})
+      };
+    });
+    console.log('this.state when click end');
+    console.log(this.state.itemsState);
   }
 
   render() {
-    console.log(this.state);
+    console.log('this.state when render');
+    console.log(this.state.itemsState);
     switch (this.state.visible) {
       case 1:
         this.IDtarget = this.state.target.id;
@@ -89,11 +104,12 @@ class SubMenu extends Component {
               <ul className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem) =>
                     <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')}
+                                 state={this.state.itemsState}
                                  liCost={this.getDataLi(liItem, 'cost')}
-                                 onClick={(e) => SubMenu.submenuClick(e, 'left')}
-                                 onContextMenu={(e) => {
+                                 onClick={(e, self) => this.submenuClick(e, 'left', self)}
+                                 onContextMenu={(e, self) => {
                       e.preventDefault();
-                      SubMenu.submenuClick(e, 'right')
+                      this.submenuClick(e, 'right', self);
                     }}/>
                 )}
               </ul>
