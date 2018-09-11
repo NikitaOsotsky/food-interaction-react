@@ -88,8 +88,6 @@ class SubMenu extends Component {
   }
 
   render() {
-    console.log('this when render');
-    console.log(this);
     switch (this.state.visible) {
       case 1:
         this.IDtarget = this.state.target.id;
