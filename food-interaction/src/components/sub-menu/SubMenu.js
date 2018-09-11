@@ -99,7 +99,7 @@ class SubMenu extends Component {
               <ul className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem) =>
                     <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')}
-                                 state={this.state}
+                                 parentState={this.state}
                                  liCost={this.getDataLi(liItem, 'cost')}
                                  onClick={(e, self) => this.submenuClick(e, 'left', self)}
                                  onContextMenu={(e, self) => {
