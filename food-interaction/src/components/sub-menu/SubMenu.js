@@ -11,8 +11,6 @@ class SubMenu extends Component {
       target: props.target,
       itemsState: Array()
     };
-    console.log('this.state in constructor');
-    console.log(this.state.itemsState);
   }
 
   /**
@@ -23,11 +21,10 @@ class SubMenu extends Component {
     this.setState((prevState) => {
       return {
         visible: prevState.visible && prevState.target === props.target ? 0: 1,
-        target: props.target
+        target: props.target,
+        itemsState: Array()
       };
     });
-    console.log('this.state in componentWillReceiveProps');
-    console.log(this.state.itemsState);
   }
 
   /**
@@ -77,24 +74,22 @@ class SubMenu extends Component {
         console.log('left');
         buttonClick = 'left';
         break;
-      default: return;
+      default: break;
     }
-    console.log('this.state when click start');
-    console.log(this.state.itemsState);
     const key = self.props.liName;
     const value = buttonClick === 'left'? 1: -1;
-    this.setState((prevState) => {
+    /*this.setState((prevState) => {
       return {
-        itemsState: this.state.itemsState.push({key: key, value: value})
+        itemsState: prevState.itemsState.push({key: key, value: value})
       };
-    });
-    console.log('this.state when click end');
-    console.log(this.state.itemsState);
+    });*/
+    //this.setState({itemsState: this.state.itemsState.push({key, value})});
+    self.setState({count: self.state.count > 0? self.state.count+value: value > 0? value: 0});
   }
 
   render() {
-    console.log('this.state when render');
-    console.log(this.state.itemsState);
+    console.log('this when render');
+    console.log(this);
     switch (this.state.visible) {
       case 1:
         this.IDtarget = this.state.target.id;
@@ -104,7 +99,7 @@ class SubMenu extends Component {
               <ul className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem) =>
                     <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')}
-                                 state={this.state.itemsState}
+                                 state={this.state}
                                  liCost={this.getDataLi(liItem, 'cost')}
                                  onClick={(e, self) => this.submenuClick(e, 'left', self)}
                                  onContextMenu={(e, self) => {
