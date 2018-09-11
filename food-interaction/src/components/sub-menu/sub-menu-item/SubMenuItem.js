@@ -10,10 +10,6 @@ class SubMenuItem extends Component {
     };
   }
 
-  componentWillReceiveProps() {
-
-  }
-
   render() {
     if (this.state.count) {
       this.marker =
@@ -30,6 +26,10 @@ class SubMenuItem extends Component {
           {this.marker}
         </li>
     );
+  }
+
+  componentDidUpdate() {
+    //TODO:
   }
 }
 

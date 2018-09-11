@@ -79,15 +79,15 @@ class SubMenu extends Component {
     }
     const key = self.props.liName;
     let value = buttonClick === 'left'? 1: -1;
-    self.setState({count: self.state.count > 0? self.state.count+value: value > 0? value: 0});
-    //this.setState({itemState: this.state.itemsState[key]=self.state.count});
+    self.setState((prevState, props) => {
+      return {count: prevState.count > 0? prevState.count+value: value > 0? value: 0};
+    });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if(this.state.visible !== nextState.visible || this.state.target !== nextState.target) {
       return true;
     }
-    console.log(this.state);
     return false;
   }
 
