@@ -9,7 +9,7 @@ class SubMenu extends Component {
     this.state = {
       visible: 1,
       target: props.target,
-      itemsState: Array()
+      itemsState: {}
     };
   }
 
@@ -22,7 +22,7 @@ class SubMenu extends Component {
       return {
         visible: prevState.visible && prevState.target === props.target ? 0: 1,
         target: props.target,
-        itemsState: Array()
+        itemsState: {}
       };
     });
   }
@@ -61,6 +61,7 @@ class SubMenu extends Component {
    *
    * @param e type event
    * @param mouseButton type string
+   * @param self type SubMenuItem this
    */
   submenuClick(e, mouseButton, self) {
     let buttonClick;
@@ -77,14 +78,17 @@ class SubMenu extends Component {
       default: break;
     }
     const key = self.props.liName;
-    const value = buttonClick === 'left'? 1: -1;
-    /*this.setState((prevState) => {
-      return {
-        itemsState: prevState.itemsState.push({key: key, value: value})
-      };
-    });*/
-    //this.setState({itemsState: this.state.itemsState.push({key, value})});
+    let value = buttonClick === 'left'? 1: -1;
     self.setState({count: self.state.count > 0? self.state.count+value: value > 0? value: 0});
+    //this.setState({itemState: this.state.itemsState[key]=self.state.count});
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if(this.state.visible !== nextState.visible || this.state.target !== nextState.target) {
+      return true;
+    }
+    console.log(this.state);
+    return false;
   }
 
   render() {
@@ -97,7 +101,7 @@ class SubMenu extends Component {
               <ul className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem) =>
                     <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')}
-                                 parentState={this.state}
+                                 parent={this}
                                  liCost={this.getDataLi(liItem, 'cost')}
                                  onClick={(e, self) => this.submenuClick(e, 'left', self)}
                                  onContextMenu={(e, self) => {

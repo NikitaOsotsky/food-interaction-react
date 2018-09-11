@@ -10,6 +10,10 @@ class SubMenuItem extends Component {
     };
   }
 
+  componentWillReceiveProps() {
+
+  }
+
   render() {
     if (this.state.count) {
       this.marker =
