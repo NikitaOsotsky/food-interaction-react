@@ -29,7 +29,10 @@ class SubMenuItem extends Component {
   }
 
   componentDidUpdate() {
-    //TODO:
+    const name = this.props.liName;
+    this.props.parent.setState((prevState, props) => {
+      return {itemsState: Object.assign(prevState.itemsState, {[name]: this.state.count})
+    }});
   }
 }
 

@@ -12,7 +12,6 @@ class SubMenu extends Component {
       itemsState: {}
     };
   }
-
   /**
    *
    * @param props
@@ -65,7 +64,6 @@ class SubMenu extends Component {
    */
   submenuClick(e, mouseButton, self) {
     let buttonClick;
-    const clickedObj = e.target;
     switch (mouseButton) {
       case 'right':
         console.log('right');
@@ -77,7 +75,6 @@ class SubMenu extends Component {
         break;
       default: break;
     }
-    const key = self.props.liName;
     let value = buttonClick === 'left'? 1: -1;
     self.setState((prevState, props) => {
       return {count: prevState.count > 0? prevState.count+value: value > 0? value: 0};
