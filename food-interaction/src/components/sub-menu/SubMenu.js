@@ -111,7 +111,7 @@ class SubMenu extends Component {
         );
         return (
             <div>
-              <span className="close-div">&#9587</span>
+              <span onClick={(e)=> this.componentWillReceiveProps(this.props)} className="close-div">{String.fromCharCode(9587)}</span>
               <img className="sub-menu__logo" src={this.state.target.firstChild.src}
                    alt={this.state.target.firstChild.alt}/>
               <h3 className="sub-menu__header main-header">{this.state.target.lastChild.textContent}</h3>
