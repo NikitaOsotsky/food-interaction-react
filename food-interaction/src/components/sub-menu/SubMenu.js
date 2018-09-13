@@ -2,8 +2,6 @@ import { Component } from "react";
 import React from "react";
 import './SubMenu.css';
 import SubMenuItem from './sub-menu-item/SubMenuItem';
-import SubPanel from './sub-panel/SubPanel';
-import * as ReactDOM from "react-dom";
 
 class SubMenu extends Component {
   constructor(props) {
@@ -81,7 +79,6 @@ class SubMenu extends Component {
     self.setState((prevState, props) => {
       return {count: prevState.count > 0? prevState.count+value: value > 0? value: 0};
     });
-    ReactDOM.render(<SubPanel />, document.querySelector('.sub-menu__sub-panel'));
   }
 
   shouldComponentUpdate(nextProps, nextState) {
