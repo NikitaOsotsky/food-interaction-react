@@ -82,10 +82,7 @@ class SubMenu extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if(this.state.visible !== nextState.visible || this.state.target !== nextState.target) {
-      return true;
-    }
-    return false;
+    return (this.state.visible !== nextState.visible || this.state.target !== nextState.target);
   }
 
   render() {
