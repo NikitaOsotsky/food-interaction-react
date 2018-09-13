@@ -13,9 +13,6 @@ class App extends Component {
         <div className="sub-menu">
         </div>
         <div className="sub-menu__sub-panel">
-          <span className="cost-label">Summary: <span className="cost-label__sum"></span></span>
-          <div className="button-submit">PAY</div>
-          <div className="viewed-list"></div>
         </div>
       </div>
     );
