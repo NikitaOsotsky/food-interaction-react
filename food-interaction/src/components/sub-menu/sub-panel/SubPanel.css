@@ -1,0 +1,68 @@
+/**
+sub-panel
+ */
+.sub-menu__sub-panel {
+    position: absolute;
+    top: 85%;
+    left: 100%;
+    width: 100%;
+    background-color: rgba(198, 201, 203, 0.32);
+    color: rgba(35, 125, 176, 1);
+    /*display: none;*/
+}
+.cost-label {
+    margin: 5px auto;
+    text-align: center;
+    user-select: none;
+    display: block;
+}
+.button-submit {
+    margin: 5px auto;
+    width: 40%;
+    height: 5%;
+    text-align: center;
+    background-color: rgba(136, 140, 143, 0.76);
+    color: #fff;
+    user-select: none;
+    cursor: pointer;
+    padding: 5px 0;
+    border: 1px solid rgba(128, 128, 128, 0.76);
+    transition: background-color ease-out 0.2s;
+}
+.button-submit:hover {
+    background-color: rgb(136, 140, 143);
+}
+.cost-label__sum {
+    color: rgba(118, 6, 30, 0.8);
+}
+.viewed-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    user-select: none;
+    background-color: rgb(201, 205, 208);
+    display: none;
+    color: rgba(118, 6, 30, 0.8);
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    text-align: center;
+    z-index: 4;
+}
+.viewed-list__checklist {
+    border-bottom: 1px solid rgba(118, 6, 30, 0.8);
+    padding: 0;
+}
+.viewed-list__checklist__value {
+    list-style: none;
+}
+.visible {
+    display: block;
+}
+.pay {
+    color: darkgreen;
+    display: inline-block;
+}
+.cancel {
+    color: darkred;
+    display: inline-block;
+}
