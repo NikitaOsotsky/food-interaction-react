@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 
 class MainMenu extends Component {
 
-  static clickHandler(e) {//ToDO: add div
+  clickHandler(e) {//ToDO: add div
     if(e.target.tagName !== 'LI' && e.target.parentElement.tagName !== 'LI') {
       return;
     }
@@ -14,7 +14,9 @@ class MainMenu extends Component {
       e.target = e.target.parentElement;
       this.clickHandler(e);
     } else {
-      ReactDOM.render(<SubMenu target={e.target}/>, document.querySelector('.sub-menu'));
+      ReactDOM.render(<SubMenu target={e.target}
+                               setSubPanelState={(self) => this.props.setSubPanelState(self)}/>,
+        document.querySelector('.sub-menu'));
     }
   }
 
@@ -27,7 +29,7 @@ class MainMenu extends Component {
       </li>
     );
     return (
-        <ul onClick={(e) => MainMenu.clickHandler(e)} className="main-menu__list">
+        <ul onClick={(e) => this.clickHandler(e)} className="main-menu__list">
           {listItems}
         </ul>
     );

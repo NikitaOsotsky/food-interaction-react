@@ -1,8 +1,6 @@
 import { Component } from "react";
 import React from "react";
 import './SubMenuItem.css';
-import * as ReactDOM from "react-dom";
-import SubPanel from "../sub-panel/SubPanel";
 
 class SubMenuItem extends Component {
   constructor() {
@@ -33,10 +31,8 @@ class SubMenuItem extends Component {
   componentDidUpdate() {
     const name = this.props.liName;
     this.props.parent.setState((prevState, props) => {
-      return {itemsState: Object.assign(prevState.itemsState, {[name]: this.state.count})
+      return {itemsState: Object.assign(prevState.itemsState, {[name]: {'count': this.state.count, 'cost': this.props.liCost}})
     }});
-      ReactDOM.render(<SubPanel itemName={this.props.liName} itemCost={this.props.liCost}
-                                itemCount={this.state.count}/>, document.querySelector('.sub-menu__sub-panel'));
   }
 }
 

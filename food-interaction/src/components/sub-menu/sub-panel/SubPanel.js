@@ -5,26 +5,24 @@ import React from "react";
 class SubPanel extends Component {
   constructor(props) {
     super(props);
-    this.summaryCost = 0;
-    this.allChosenItems = {};
-  }
-
-  componentWillMount() {
-    this.summaryCost += this.props.itemCost;
-    this.allChosenItems[this.props.itemName] = this.props.itemCost * this.props.itemCount;
-    console.log('componentWillMount ', this.allChosenItems);
+    this.sum = 0;
   }
 
   componentWillUpdate() {
-    console.log('componentWillUpdate ', this.allChosenItems);
+    this.sum = 0;
+    for (let item in this.props.state) {
+      if (this.props.state.hasOwnProperty(item)) {
+        this.sum += this.props.state[item].count * this.props.state[item].cost;
+      }
+    }
+    this.sum = SubPanel.gaussRound(this.sum, 2);
   }
 
   render() {
-    console.log('render ', this.allChosenItems);
-    this.summaryCost = SubPanel.gaussRound(this.summaryCost, 2);
+    if (!this.props.state || !Object.keys(this.props.state).length) return null;
     return [
       <span key={Math.random()} className="cost-label">Summary: <span
-            className="cost-label__sum">{this.summaryCost}</span></span>,
+            className="cost-label__sum">{this.sum}</span></span>,
       <div key={Math.random()} className="button-submit">PAY</div>,
       <div key={Math.random()} className="viewed-list"> </div>
     ];

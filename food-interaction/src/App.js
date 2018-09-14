@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
 import './App.css';
 import MainMenu from './components/main-menu/MainMenu';
+import SubPanel from "./components/sub-menu/sub-panel/SubPanel";
 
 const model = getModelData();
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      subPanel: undefined
+    }
+  }
+
+  subPanelState(self) {
+    this.setState(() => {
+      return {
+        subPanel: self.state.itemsState
+      }
+    });
+  }
+
   render() {
     return (
       <div className="main-menu">
         <h3 className="main-menu__header">212 Thompson Route</h3>
-        <MainMenu menu={{model}}/>
+        <MainMenu menu={{model}} setSubPanelState={(self)=> this.subPanelState(self)}/>
         <div className="sub-menu">
         </div>
         <div className="sub-menu__sub-panel">
+          <SubPanel state={this.state.subPanel}/>
         </div>
       </div>
     );

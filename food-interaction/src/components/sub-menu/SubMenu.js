@@ -11,6 +11,7 @@ class SubMenu extends Component {
       target: props.target,
       itemsState: {}
     };
+    this.props.setSubPanelState(this);
   }
   /**
    *
@@ -66,11 +67,9 @@ class SubMenu extends Component {
     let buttonClick;
     switch (mouseButton) {
       case 'right':
-        console.log('right');
         buttonClick = 'right';
         break;
       case 'left':
-        console.log('left');
         buttonClick = 'left';
         break;
       default: break;
@@ -82,6 +81,7 @@ class SubMenu extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    this.props.setSubPanelState(this);
     return (this.state.visible !== nextState.visible || this.state.target !== nextState.target);
   }
 
@@ -101,7 +101,8 @@ class SubMenu extends Component {
                                  onContextMenu={(e, self) => {
                       e.preventDefault();
                       this.submenuClick(e, 'right', self);
-                    }}/>
+                    }}
+                    />
                 )}
               </ul>
             </h4>
