@@ -94,7 +94,7 @@ class SubMenu extends Component {
             <h4 key={key.menuName} className="sub-menu__header slave-header">{key.menuName}
               <ul className="sub-menu__list">
                 {this.liItems = key.menu.map((liItem) =>
-                    <SubMenuItem key={Math.random()} liName={this.getDataLi(liItem, 'name')}
+                    <SubMenuItem key={this.getDataLi(liItem, 'name')} liName={this.getDataLi(liItem, 'name')}
                                  parent={this}
                                  liCost={this.getDataLi(liItem, 'cost')}
                                  onClick={(e, self) => this.submenuClick(e, 'left', self)}

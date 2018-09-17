@@ -21,13 +21,19 @@ class SubPanel extends Component {
   render() {
     if (!this.props.state || !Object.keys(this.props.state).length) return null;
     return [
-      <span key={Math.random()} className="cost-label">Summary: <span
+      <span key="cost-label" className="cost-label">Summary: <span
             className="cost-label__sum">{this.sum}</span></span>,
-      <div key={Math.random()} className="button-submit">PAY</div>,
-      <div key={Math.random()} className="viewed-list"> </div>
+      <div key="submit" className="button-submit">PAY</div>,
+      <div key="view" className="viewed-list"> </div>
     ];
   }
 
+  /**
+   * for round number
+   * @param num - number
+   * @param decimalPlaces - number
+   * @returns {number}
+   */
   static gaussRound(num, decimalPlaces) {
     let d = decimalPlaces || 0,
     m = Math.pow(10, d),
